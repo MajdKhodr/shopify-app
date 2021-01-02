@@ -10,8 +10,12 @@ export class MovieDbService {
 
   constructor(private firestore: AngularFirestore) { }
 
-  getAddresses(): Observable<DocumentChangeAction<unknown>[]> {
+  getNominationList(): Observable<DocumentChangeAction<unknown>[]> {
     return this.firestore.collection('nomination-list').snapshotChanges();
+  }
+
+  deleteNominee(movieId: string): Promise<void> {
+    return this.firestore.collection('nomination-list').doc(movieId).delete();
   }
 
   // createAddress(address: MovieEntry): Promise<DocumentReference> {
@@ -24,8 +28,4 @@ export class MovieDbService {
   //   delete address.id;
   //   return this.firestore.collection('addresses').doc(addressId).update(address);
   // }
-
-  deleteAddress(addressId: string): Promise<void> {
-    return this.firestore.collection('addresses').doc(addressId).delete();
-  }
 }

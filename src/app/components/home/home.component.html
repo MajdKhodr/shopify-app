@@ -13,7 +13,20 @@
 
     </div>
     <div class="col card shadow">
-
+      <div class="card-body table table-responsive">
+        <div>
+          <strong>Nominations</strong>
+        </div>
+        <table>
+          <tr *ngFor="let movie of nomiationList">
+            <td>{{ movie.id }}</td>
+            <td>{{ movie.name }}</td>
+            <td style="text-align: right">
+              <button (click)="remove(movie)" class="btn btn-dark" id="removeBtn">Remove</button>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
 </div>

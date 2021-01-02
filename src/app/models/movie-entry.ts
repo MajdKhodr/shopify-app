@@ -1,8 +1,6 @@
 export class MovieEntry {
   constructor(
-    public movieId: number,
+    public id: string,
     public name: string,
-    public phoneNumber: number,
-    public email: string,
   ) {}
 }

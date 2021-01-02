@@ -6,6 +6,12 @@ h3 {
   padding: 10px;
 }
 
+#removeBtn {
+  font-size: 12px;
+  width:80px;
+  height:30px;
+}
+
 .input-icons i {
   position: absolute;
 }
