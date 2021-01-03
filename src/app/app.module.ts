@@ -8,6 +8,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { HomeComponent } from './components/home/home.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [

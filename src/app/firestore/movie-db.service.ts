@@ -18,14 +18,7 @@ export class MovieDbService {
     return this.firestore.collection('nomination-list').doc(movieId).delete();
   }
 
-  // createAddress(address: MovieEntry): Promise<DocumentReference> {
-  //   // delete address.id;
-  //   return this.firestore.collection('addresses').add({...address});
-  // }
-
-  // updateAddress(address: MovieEntry): Promise<void> {
-  //   const addressId = address.id;
-  //   delete address.id;
-  //   return this.firestore.collection('addresses').doc(addressId).update(address);
-  // }
+  addNominee(movie: MovieEntry): Promise<DocumentReference> {
+    return this.firestore.collection('addresses').add({...movie});
+  }
 }

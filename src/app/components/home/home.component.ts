@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieDbService } from '../../firestore/movie-db.service';
 import { MovieEntry } from '../../models/movie-entry';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +10,7 @@ import { MovieEntry } from '../../models/movie-entry';
 })
 export class HomeComponent implements OnInit {
   nomiationList: MovieEntry[] = [];
+  OMDbApi: 'http://www.omdbapi.com/?i=tt3896198&apikey=53429502';
 
   constructor(private store: MovieDbService) { }
 
@@ -26,5 +28,9 @@ export class HomeComponent implements OnInit {
   remove(movie: MovieEntry): void {
     this.store.deleteNominee(movie.id);
     alert(movie.name + ' has been removed!');
+  }
+
+  onSubmit(): void {
+    alert('Search has been made!');
   }
 }
