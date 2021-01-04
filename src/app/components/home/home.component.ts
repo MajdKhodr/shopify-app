@@ -10,9 +10,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HomeComponent implements OnInit {
   nomiationList: MovieEntry[] = [];
-  OMDbApi: 'http://www.omdbapi.com/?i=tt3896198&apikey=53429502';
+  movieTitle: string;
+  OMDbURL: 'http://www.omdbapi.com/?i=tt3896198&apikey=53429502';
 
-  constructor(private store: MovieDbService) { }
+  constructor(private store: MovieDbService,
+              private http: HttpClient) { }
 
   ngOnInit(): void {
     this.store.getNominationList().subscribe(data => {
@@ -31,6 +33,11 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit(): void {
+    const APIRequest = this.OMDbURL + '&t=' + this.movieTitle;
+    // let year = '';
+    const reponse = this.http.get(APIRequest).subscribe(data => {
+    });
+    console.log(reponse);
     alert('Search has been made!');
   }
 }

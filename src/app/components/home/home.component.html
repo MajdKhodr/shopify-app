@@ -1,13 +1,14 @@
 <div class="container">
   <h3>The Shoppies</h3>
-  <div class="form-group card shadow" id="movie-title">
-    <label for="title">Movie title:</label>
-    <div class="input-icons">
-      <i class="fa fa-search icon" ></i>
-      <input class="input-field" type="text" class="form-control" id="title" formControlName="title">
+  <form (submit)="onSubmit()">
+    <div class="form-group card shadow" id="movie-title">
+      <label for="movietitle">Movie title:</label>
+      <div class="input-icons">
+<!--        <i class="fa fa-search icon" ></i>-->
+        <input [(ngModel)]="movieTitle" [ngModelOptions]="{standalone: true}" class="input-field" type="text" class="form-control" id="movietitle">
+      </div>
     </div>
-    <button type="submit" class="btn btn-dark" (click)="onSubmit()">Search</button>
-  </div>
+  </form>
 
   <div class="row">
     <div class="col card shadow">
