@@ -1,7 +1,7 @@
 export class MovieEntry {
   constructor(
     public id: string,
-    public name: string,
+    public title: string,
     public year: string,
   ) {}
 }

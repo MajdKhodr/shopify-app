@@ -12,7 +12,15 @@
 
   <div class="row">
     <div class="col card shadow">
-
+      <div class="card-body">
+        <div>
+          <strong>Results for "{{ movieTitle }}"</strong>
+        </div>
+        <div *ngIf="movieResult != null" class="row">
+          <p>{{ movieResult.title }} ({{ movieResult.year }})</p>
+          <button (click)="add(movieResult)" class="btn btn-dark" id="addBtn">Nominate</button>
+        </div>
+      </div>
     </div>
     <div class="col card shadow">
       <div class="card-body table table-responsive">
@@ -22,8 +30,8 @@
         <table>
           <tr *ngFor="let movie of nomiationList">
             <td>{{ movie.id }}</td>
-            <td>{{ movie.name }}</td>
-            <td style="text-align: right">
+            <td>{{ movie.title }}</td>
+            <td>
               <button (click)="remove(movie)" class="btn btn-dark" id="removeBtn">Remove</button>
             </td>
           </tr>

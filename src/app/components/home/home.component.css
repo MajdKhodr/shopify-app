@@ -12,6 +12,12 @@ h3 {
   height:30px;
 }
 
+#addBtn {
+  font-size: 12px;
+  width:90px;
+  height:30px;
+}
+
 .input-icons i {
   position: absolute;
 }

@@ -19,6 +19,6 @@ export class MovieDbService {
   }
 
   addNominee(movie: MovieEntry): Promise<DocumentReference> {
-    return this.firestore.collection('addresses').add({...movie});
+    return this.firestore.collection('nomination-list').add({...movie});
   }
 }

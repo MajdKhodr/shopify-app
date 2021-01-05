@@ -11,7 +11,8 @@ import { HttpClient } from '@angular/common/http';
 export class HomeComponent implements OnInit {
   nomiationList: MovieEntry[] = [];
   movieTitle: string;
-  OMDbURL: 'http://www.omdbapi.com/?i=tt3896198&apikey=53429502';
+  OMDbURL = 'http://www.omdbapi.com/?i=tt3896198&apikey=53429502';
+  movieResult: MovieEntry;
 
   constructor(private store: MovieDbService,
               private http: HttpClient) { }
@@ -27,17 +28,22 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  remove(movie: MovieEntry): void {
-    this.store.deleteNominee(movie.id);
-    alert(movie.name + ' has been removed!');
-  }
-
   onSubmit(): void {
     const APIRequest = this.OMDbURL + '&t=' + this.movieTitle;
-    // let year = '';
-    const reponse = this.http.get(APIRequest).subscribe(data => {
-    });
-    console.log(reponse);
-    alert('Search has been made!');
+    // const reponse = this.http.get(APIRequest).subscribe();
+    fetch(APIRequest)
+      .then(response => response.json())
+      .then(res => this.movieResult = new MovieEntry('4', res.Title, res.Year));
+  }
+
+  add(movie: MovieEntry): void {
+    console.log(movie);
+    this.store.addNominee(movie);
+    alert(movie.title + ' has been added to the nomination list!');
+  }
+
+  remove(movie: MovieEntry): void {
+    this.store.deleteNominee(movie.id);
+    alert(movie.title + ' has been removed!');
   }
 }
