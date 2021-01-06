@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
     // const reponse = this.http.get(APIRequest).subscribe();
     fetch(APIRequest)
       .then(response => response.json())
-      .then(res => this.movieResult = new MovieEntry('New', res.Title, res.Year));
+      .then(res => this.movieResult = new MovieEntry(null, res.Title, res.Year));
   }
 
   add(movie: MovieEntry): void {
