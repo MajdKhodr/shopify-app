@@ -37,9 +37,8 @@ export class HomeComponent implements OnInit {
   }
 
   add(movie: MovieEntry): void {
-    console.log(movie);
     this.store.addNominee(movie);
-    alert(movie.title + ' has been added to the nomination list!');
+    alert(movie.title + ' has beenl added to the nomination list!');
   }
 
   remove(movie: MovieEntry): void {

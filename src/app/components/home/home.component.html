@@ -5,23 +5,30 @@
       <label for="movietitle">Movie title:</label>
       <div class="input-icons">
 <!--        <i class="fa fa-search icon" ></i>-->
-        <input [(ngModel)]="movieTitle" [ngModelOptions]="{standalone: true}" class="input-field" type="text" class="form-control" id="movietitle">
+        <input [(ngModel)]="movieTitle" [ngModelOptions]="{standalone: true}" class="input-field" type="text" class="form-control" id="movietitle" placeholder="Search movies">
       </div>
     </div>
   </form>
 
   <div class="row">
+
+
     <div class="col card shadow">
-      <div class="card-body">
+      <div class="card-body table table-responsive">
         <div>
           <strong>Results for "{{ movieTitle }}"</strong>
         </div>
-        <div *ngIf="movieResult != null" class="row">
-          <p>{{ movieResult.title }} ({{ movieResult.year }})</p>
-          <button (click)="add(movieResult)" class="btn btn-dark" id="addBtn">Nominate</button>
-        </div>
+        <table>
+          <tr *ngIf="movieResult != null">
+            <td>{{ movieResult.title }} ({{ movieResult.year }})</td>
+            <td>
+              <button (click)="add(movieResult)" class="btn btn-dark" id="addBtn">Nominate</button>
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
+
     <div class="col card shadow">
       <div class="card-body table table-responsive">
         <div>
@@ -29,8 +36,7 @@
         </div>
         <table>
           <tr *ngFor="let movie of nomiationList">
-            <td>{{ movie.id }}</td>
-            <td>{{ movie.title }}</td>
+            <td>{{ movie.title }} ({{ movie.year }})</td>
             <td>
               <button (click)="remove(movie)" class="btn btn-dark" id="removeBtn">Remove</button>
             </td>
