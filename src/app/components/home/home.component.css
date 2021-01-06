@@ -17,23 +17,3 @@ h3 {
   width:90px;
   height:30px;
 }
-
-.input-icons i {
-  position: absolute;
-}
-
-.input-icons {
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-.icon {
-  padding: 10px;
-  min-width: 40px;
-}
-
-.input-field {
-  width: 100%;
-  padding: 10px;
-  text-align: center;
-}
