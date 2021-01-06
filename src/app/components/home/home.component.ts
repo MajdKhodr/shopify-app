@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
 
   onSubmit(): void {
     const APIRequest = this.OMDbURL + '&t=' + this.movieTitle;
-    // const reponse = this.http.get(APIRequest).subscribe();
+    // Performs Http Get request on the OMDb API
     fetch(APIRequest)
       .then(response => response.json())
       .then(res => this.movieResult = new MovieEntry(null, res.Title, res.Year));

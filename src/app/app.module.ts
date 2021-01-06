@@ -9,7 +9,6 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { HomeComponent } from './components/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +23,6 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFirestoreModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
