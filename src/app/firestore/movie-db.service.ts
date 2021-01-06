@@ -14,11 +14,12 @@ export class MovieDbService {
     return this.firestore.collection('nomination-list').snapshotChanges();
   }
 
-  deleteNominee(movieId: string): Promise<void> {
-    return this.firestore.collection('nomination-list').doc(movieId).delete();
+  addNominee(movie: MovieEntry): Promise<DocumentReference> {
+    delete movie.id;
+    return this.firestore.collection('nomination-list').add({...movie});
   }
 
-  addNominee(movie: MovieEntry): Promise<DocumentReference> {
-    return this.firestore.collection('nomination-list').add({...movie});
+  deleteNominee(movieId: string): Promise<void> {
+    return this.firestore.collection('nomination-list').doc(movieId).delete();
   }
 }

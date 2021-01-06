@@ -33,16 +33,21 @@ export class HomeComponent implements OnInit {
     // const reponse = this.http.get(APIRequest).subscribe();
     fetch(APIRequest)
       .then(response => response.json())
-      .then(res => this.movieResult = new MovieEntry('4', res.Title, res.Year));
+      .then(res => this.movieResult = new MovieEntry('New', res.Title, res.Year));
   }
 
   add(movie: MovieEntry): void {
-    this.store.addNominee(movie);
-    alert(movie.title + ' has beenl added to the nomination list!');
+    this.store.addNominee(movie)
+      .then(docRef => {
+        movie.id = docRef.id;
+        alert(movie.title + ' has been added to the nomination list!');
+      })
+      .catch(_ => alert('Error. ' + movie.title + ' could not be added to the nomination list!'));
   }
 
   remove(movie: MovieEntry): void {
-    this.store.deleteNominee(movie.id);
-    alert(movie.title + ' has been removed!');
+    this.store.deleteNominee(movie.id)
+      .then(_ => alert(movie.title + ' has been removed!'))
+      .catch(_ => alert('Error. ' + movie.title + ' could not be deleted!'));
   }
 }
