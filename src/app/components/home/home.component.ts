@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieDbService } from '../../firestore/movie-db.service';
 import { MovieEntry } from '../../models/movie-entry';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -14,8 +13,7 @@ export class HomeComponent implements OnInit {
   OMDbURL = 'http://www.omdbapi.com/?i=tt3896198&apikey=53429502';
   movieResult: MovieEntry;
 
-  constructor(private store: MovieDbService,
-              private http: HttpClient) { }
+  constructor(private store: MovieDbService) { }
 
   ngOnInit(): void {
     this.store.getNominationList().subscribe(data => {
