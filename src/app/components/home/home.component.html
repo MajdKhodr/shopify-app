@@ -18,7 +18,7 @@
         <table>
           <tr *ngIf="movieResult != null">
             <td>{{ movieResult.title }} ({{ movieResult.year }})</td>
-            <td>
+            <td *ngIf="displayNominateBtn">
               <button (click)="add(movieResult)" class="btn btn-dark" id="addBtn">Nominate</button>
             </td>
           </tr>

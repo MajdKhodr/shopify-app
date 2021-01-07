@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   movieTitle: string;
   OMDbURL = 'https://www.omdbapi.com/?i=tt3896198&apikey=53429502';
   movieResult: MovieEntry;
+  displayNominateBtn = true;
 
   constructor(private store: MovieDbService) { }
 
@@ -31,7 +32,22 @@ export class HomeComponent implements OnInit {
     // Performs Http Get request on the OMDb API
     fetch(APIRequest)
       .then(response => response.json())
-      .then(res => this.movieResult = new MovieEntry(null, res.Title, res.Year));
+      .then(res => {
+        this.movieResult = new MovieEntry(null, res.Title, res.Year);
+
+        // Checks if the search result has already been nominated
+        let exists = false;
+        for (const movie of this.nomiationList) {
+          if (movie.title === this.movieResult.title) {
+            exists = true;
+          }
+        }
+        if (exists) {
+          this.displayNominateBtn = false;
+        } else {
+          this.displayNominateBtn = true;
+        }
+      });
   }
 
   add(movie: MovieEntry): void {
@@ -41,6 +57,10 @@ export class HomeComponent implements OnInit {
         alert(movie.title + ' has been added to the nomination list!');
       })
       .catch(_ => alert('Error. ' + movie.title + ' could not be added to the nomination list!'));
+
+    if (this.nomiationList.length + 1 === 5) {
+      alert('You currently have 5 nominations!');
+    }
   }
 
   remove(movie: MovieEntry): void {
