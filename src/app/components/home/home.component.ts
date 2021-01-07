@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit {
 
   remove(movie: MovieEntry): void {
     this.store.deleteNominee(movie.id)
-      .then(_ => alert(movie.title + ' has been removed!'))
-      .catch(_ => alert('Error. ' + movie.title + ' could not be deleted!'));
+      .then(_ => alert(movie.title + ' has been removed from the nomination list!'))
+      .catch(_ => alert('Error. ' + movie.title + ' could not be removed from the nomination list!'));
   }
 }
