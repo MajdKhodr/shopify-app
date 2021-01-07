@@ -10,7 +10,7 @@ import { MovieEntry } from '../../models/movie-entry';
 export class HomeComponent implements OnInit {
   nomiationList: MovieEntry[] = [];
   movieTitle: string;
-  OMDbURL = 'http://www.omdbapi.com/?i=tt3896198&apikey=53429502';
+  OMDbURL = 'https://www.omdbapi.com/?i=tt3896198&apikey=53429502';
   movieResult: MovieEntry;
 
   constructor(private store: MovieDbService) { }
