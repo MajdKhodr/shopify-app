@@ -1,3 +1,12 @@
 export const environment = {
-  production: true
+  production: true,
+  firebaseConfig: {
+    apiKey: 'AIzaSyAcnY7YOf4S4bhgpUNdVLoDEbY9W57B9cg',
+    authDomain: 'shopify-app-bf08c.firebaseapp.com',
+    projectId: 'shopify-app-bf08c',
+    storageBucket: 'shopify-app-bf08c.appspot.com',
+    messagingSenderId: '787191533929',
+    appId: '1:787191533929:web:8241294655bbd5df912df8',
+    measurementId: 'G-KZB9F2888S'
+  }
 };
