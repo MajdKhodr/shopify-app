@@ -52,10 +52,7 @@ export class HomeComponent implements OnInit {
 
   add(movie: MovieEntry): void {
     this.store.addNominee(movie)
-      .then(docRef => {
-        movie.id = docRef.id;
-        alert(movie.title + ' has been added to the nomination list!');
-      })
+      .then(docRef => movie.id = docRef.id)
       .catch(_ => alert('Error. ' + movie.title + ' could not be added to the nomination list!'));
 
     if (this.nomiationList.length + 1 === 5) {
@@ -65,7 +62,6 @@ export class HomeComponent implements OnInit {
 
   remove(movie: MovieEntry): void {
     this.store.deleteNominee(movie.id)
-      .then(_ => alert(movie.title + ' has been removed from the nomination list!'))
       .catch(_ => alert('Error. ' + movie.title + ' could not be removed from the nomination list!'));
   }
 }
