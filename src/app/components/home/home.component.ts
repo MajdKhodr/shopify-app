@@ -61,10 +61,10 @@ export class HomeComponent implements OnInit {
         .catch(_ => alert('Error. ' + movie.title + ' could not be added to the nomination list!'));
 
       if (this.nomiationList.length + 1 === 5) {
-        alert('All done, you currently have 5 nominations!');
+        alert('All done! You currently have 5 nominations.');
       }
     } else {
-      alert('You have reached the nomination limit.');
+      alert('You have reached the nomination list limit.');
     }
   }
 
