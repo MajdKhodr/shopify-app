@@ -51,12 +51,16 @@ export class HomeComponent implements OnInit {
   }
 
   add(movie: MovieEntry): void {
-    this.store.addNominee(movie)
-      .then(docRef => movie.id = docRef.id)
-      .catch(_ => alert('Error. ' + movie.title + ' could not be added to the nomination list!'));
+    if (this.nomiationList.length < 5) {
+      this.store.addNominee(movie)
+        .then(docRef => movie.id = docRef.id)
+        .catch(_ => alert('Error. ' + movie.title + ' could not be added to the nomination list!'));
 
-    if (this.nomiationList.length + 1 === 5) {
-      alert('You currently have 5 nominations!');
+      if (this.nomiationList.length + 1 === 5) {
+        alert('All done, you currently have 5 nominations!');
+      }
+    } else {
+      alert('You have reached the nomination limit.');
     }
   }
 
