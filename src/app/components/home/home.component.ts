@@ -64,7 +64,7 @@ export class HomeComponent implements OnInit {
         alert('All done! You currently have 5 nominations.');
       }
     } else {
-      alert('You have reached the nomination list limit.');
+      alert('Error. You\'ve reached the nomination list limit.');
     }
   }
 
