@@ -28,12 +28,16 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.movieResult = null;
     const APIRequest = this.OMDbURL + '&t=' + this.movieTitle;
     // Performs Http Get request on the OMDb API
     fetch(APIRequest)
       .then(response => response.json())
       .then(res => {
-        this.movieResult = new MovieEntry(null, res.Title, res.Year);
+        // Movies only check
+        if (res.Type === 'movie') {
+          this.movieResult = new MovieEntry(null, res.Title, res.Year);
+        }
 
         // Checks if the search result has already been nominated
         let exists = false;
